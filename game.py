@@ -123,7 +123,14 @@ class GameOfLife:
         def print_board(self):
             """
             Print the contents in the board
-            :return:
             """
-            for values in self.board_values:
-                print(values)
+
+            for array in self.board_values:
+                single_line = "|"
+                for value in array:
+                    if value == 1:
+                        single_line += "X" + "  "
+                    else:
+                        single_line += "." + "  "
+                single_line += "|"
+                print(single_line)
