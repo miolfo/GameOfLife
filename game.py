@@ -56,9 +56,7 @@ class GameOfLife:
 
     def apply_rules(self):
         """
-        Apply first rule of Conways game of life to the board
-        1.Any live cell with fewer than two live neighbours dies, as if
-        caused by under-population.
+        Apply Conway's Game Of Life rules (https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life)
         """
         # Create a copy of the board
         next_iter_live_cells = []
