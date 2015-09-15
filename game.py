@@ -42,6 +42,7 @@ class GameOfLife:
     def game_loop(self):
         print("Started a game with following board: ")
         self.game_board.print_board()
+        print("------------------------------------")
         while True:
             self.single_iteration()
             self.game_board.print_board()
@@ -63,7 +64,7 @@ class GameOfLife:
         for i in range(1, self.board_width - 1):
             for j in range(1, self.board_height - 1):
                 live_neighbours = self.check_neighbours(Point(i, j))
-                this_cell_status = self.game_board.board_values[i][j]
+                this_cell_status = self.game_board.board_values[j][i]
                 if (live_neighbours == 2 or live_neighbours == 3) and this_cell_status == 1:
                     next_iter_live_cells.append(Point(i, j))
                 if live_neighbours == 3 and this_cell_status == 0:
