@@ -61,8 +61,8 @@ class GameOfLife:
         """
         # Create a copy of the board
         next_iter_live_cells = []
-        for i in range(1, self.board_width - 1):
-            for j in range(1, self.board_height - 1):
+        for i in range(0, self.board_width):
+            for j in range(0, self.board_height):
                 live_neighbours = self.check_neighbours(Point(i, j))
                 this_cell_status = self.game_board.board_values[j][i]
                 if (live_neighbours == 2 or live_neighbours == 3) and this_cell_status == 1:
@@ -85,6 +85,9 @@ class GameOfLife:
             # print(point.x, point.y + i)
             # print(self.game_board.board_values[point.x][point.y + i])
             for j in range(-1, 2):
+                if point.x + j < 0 or point.x + j >= self.board_width or point.y + i < 0 or point.y + i >= self.board_height:
+                    break
+
                 curr_cell_status = self.game_board.board_values[point.x + j][
                     point.y + i]
                 if curr_cell_status == 1:
