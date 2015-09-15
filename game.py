@@ -28,6 +28,7 @@ class GameOfLife:
             x_coord = random.randint(0, self.board_width - 1)
             y_coord = random.randint(0, self.board_height - 1)
             self.game_board.set_cell_status(Point(x_coord, y_coord), 1)
+        self.game_loop()
 
     def start_game(self, array_of_points):
         """
