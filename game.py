@@ -18,7 +18,7 @@ class GameOfLife:
         self.board_height = board_height
         self.game_board = self.Board(board_width, board_height)
 
-    def start_random_game(self, no_of_cells):
+    def start_random_game(self, no_of_cells, iterations):
         """
         Start a game with live cells in random positions
         :param no_of_cells: Number of cells generated to the board
@@ -28,7 +28,7 @@ class GameOfLife:
             x_coord = random.randint(0, self.board_width - 1)
             y_coord = random.randint(0, self.board_height - 1)
             self.game_board.set_cell_status(Point(x_coord, y_coord), 1)
-        self.game_loop()
+        self.game_loop(iterations)
 
     def start_game(self, array_of_points):
         """
@@ -40,14 +40,22 @@ class GameOfLife:
             self.game_board.set_cell_status(point, 1)
         self.game_loop()
 
-    def game_loop(self):
+    def game_loop(self, iterations):
         print("Started a game with following board: ")
         self.game_board.print_board()
         print("------------------------------------")
-        while True:
-            self.single_iteration()
-            self.game_board.print_board()
-            input("Press Enter for next iteration")
+        if iterations == 0:
+            while True:
+                self.single_iteration()
+                self.game_board.print_board()
+                input("Press Enter for next iteration")
+        else:
+            while True:
+                for i in range(0, iterations):
+                    self.single_iteration()
+                self.game_board.print_board()
+                input("Press Enter for next iteration")
+
 
     def single_iteration(self):
         """

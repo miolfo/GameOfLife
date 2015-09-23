@@ -1,8 +1,10 @@
 __author__ = 'Forge'
+import os
+import sys
+sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 from GameOfLife import game
-
 conway = game.GameOfLife(20, 20)
-conway.start_random_game(20)
+conway.start_random_game(20, 0)
 arr_of_points = []
 # Blinker
 # arr_of_points.append(game.Point(1, 1))
